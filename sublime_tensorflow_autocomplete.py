@@ -50,15 +50,11 @@ class TfdocCommand(sublime_plugin.TextCommand):
 		sub_selec = selection.split('.')
 		size = len(sub_selec)
 
-		if(sub_selec[0] == "tf"):
-			if(size == 1):
-				webbrowser.open("https://www.tensorflow.org/api_docs/python/%s" % sub_selec[0])
-			elif(size == 2):
-				webbrowser.open("https://www.tensorflow.org/api_docs/python/%s/%s" % (sub_selec[0], sub_selec[1]))
-			elif(size == 3):
-				webbrowser.open("https://www.tensorflow.org/api_docs/python/%s/%s/%s" % (sub_selec[0], sub_selec[1], sub_selec[2]))
-			else:
-				webbrowser.open("https://www.tensorflow.org/api_docs/python/")
+		selec_link = selection.replace('.', '/')
+		sub_selec = selec_link.split('/')
+
+		if selection + "()" in tensorflow_functions:
+			webbrowser.open("https://www.tensorflow.org/api_docs/python/%s" % selec_link)
 		else:
-			sublime.error_message("The selection must begin with 'tf'")
+			sublime.error_message("Not a Tensorflow class or function")
 		
