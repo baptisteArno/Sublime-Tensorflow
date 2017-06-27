@@ -17,7 +17,7 @@ Sublime Tensorflow offers you:
   * Windows: `ctrl + alt + t`
   * OSX: `ctrl + cmd + t`
   
-# Config #
+# Configuration #
 
 You can change the shortcut by editing the keymap file accessible from *Preferences->Package Settings->Sublime Tensorflow->Settings - User*
 
