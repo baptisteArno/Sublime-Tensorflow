@@ -56,5 +56,5 @@ class TfdocCommand(sublime_plugin.TextCommand):
 		if selection + "()" in tensorflow_functions:
 			webbrowser.open("https://www.tensorflow.org/api_docs/python/%s" % selec_link)
 		else:
-			sublime.error_message("Not a Tensorflow class or function")
+			sublime.error_message("Not a Tensorflow class or function.\nHere is an example of what can be selected : 'tf.nn.conv2d'")
 		
