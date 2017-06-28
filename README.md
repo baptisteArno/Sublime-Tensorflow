@@ -5,7 +5,7 @@ Tensorflow plugin for Sublime Text editor.
 ## Installation ##
 
 Sublime Tensorflow can be installed: 
-* Through Sublime Package Control 
+* Through Sublime Package Control. Package name: *Tensorflow*
 * Manually by cloning this repo and copy/paste in a folder into the Sublime Text packages directory.
 
 ## Usage ##
