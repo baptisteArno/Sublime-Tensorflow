@@ -39,7 +39,7 @@ class TensorflowAutocomplete(sublime_plugin.EventListener):
 
 		return completions
 
-class TfdocCommand(sublime_plugin.TextCommand):
+class TensorflowDocCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit):
 

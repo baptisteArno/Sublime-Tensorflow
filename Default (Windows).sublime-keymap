@@ -1,6 +1,6 @@
 [
     {
-        "keys": ["ctrl+alt+t"],
-        "command": "tfdoc"
+        "keys": ["ctrl+alt+w"],
+        "command": "tensorflow_doc"
     }
 ]
