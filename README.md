@@ -13,9 +13,8 @@ Sublime Tensorflow can be installed:
 Sublime Tensorflow offers you: 
 * Autocompletion from a list scrapped from official Tensorflow API documentation.
 * Shortcut to check the doc by selecting the Tensorflow class/function and:
-  * Linux: `ctrl + shift + t`
-  * Windows: `ctrl + alt + t`
-  * OSX: `ctrl + cmd + t`
+  * Windows & Linux: `ctrl + alt + w`
+  * OSX: `ctrl + cmd + w`
   
 ## Configuration ##
 
@@ -26,7 +25,7 @@ The correct syntax is the following:
 ```
 [
     {
-        "keys": ["ctrl+shift+t"],
+        "keys": ["ctrl+alt+w"],
         "command": "tfdoc"
     }
 ]
