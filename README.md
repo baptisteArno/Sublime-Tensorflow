@@ -2,6 +2,8 @@
 
 Tensorflow plugin for Sublime Text editor.
 
+![goto doc example](https://user-images.githubusercontent.com/16015833/27678287-fab80c96-5cb4-11e7-8ebd-2818c42776c0.gif "Straight-to-doc example")
+
 ## Installation ##
 
 Sublime Tensorflow can be installed: 
