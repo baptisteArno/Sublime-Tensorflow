@@ -33,3 +33,8 @@ The correct syntax is the following:
 ]
 ```
   
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/baptisteArnaud/Sublime-Tensorflow/badge.svg?style=beer-square)](https://beerpay.io/baptisteArnaud/Sublime-Tensorflow)  [![Beerpay](https://beerpay.io/baptisteArnaud/Sublime-Tensorflow/make-wish.svg?style=flat-square)](https://beerpay.io/baptisteArnaud/Sublime-Tensorflow?focus=wish)
