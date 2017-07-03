@@ -2094,11 +2094,7 @@ class TensorflowDocCommand(sublime_plugin.TextCommand):
         for region in self.view.sel():
             selection += self.view.substr(region)
 
-        sub_selec = selection.split('.')
-        size = len(sub_selec)
-
         selec_link = selection.replace('.', '/')
-        sub_selec = selec_link.split('/')
 
         if selection + "()" in tensorflow_functions:
             webbrowser.open("https://www.tensorflow.org/api_docs/python/%s" % selec_link)
