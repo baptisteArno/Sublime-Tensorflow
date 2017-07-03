@@ -2059,7 +2059,10 @@ class TensorflowAutocomplete(sublime_plugin.EventListener):
 
     def __init__(self):
 
-        self.tf_completions = [("%s \tTensorflow" % s, s.replace("()", "($1)")) for s in tensorflow_functions]
+        self.tf_completions = [
+            ("%s \tTensorflow" % s, s.replace("()", "($1)"))
+            for s in tensorflow_functions
+        ]
 
     def on_query_completions(self, view, prefix, locations):
 
@@ -2079,7 +2082,8 @@ class TensorflowAutocomplete(sublime_plugin.EventListener):
             trigger = m.group(1)[::-1]
             # filter and strip the completions
             completions = [
-                (c[0], c[1][len(trigger):]) for c in completions
+                (c[0], c[1][len(trigger):])
+                for c in completions
                 if c[1].startswith(trigger)
             ]
 
