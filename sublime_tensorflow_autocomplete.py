@@ -2054,52 +2054,53 @@ RE_TRIGGER_BEFORE = re.compile(
     r"\w*(\.[\w\.]+)"
 )
 
+
 class TensorflowAutocomplete(sublime_plugin.EventListener):
 
-	def __init__(self):
+    def __init__(self):
 
-		self.tf_completions = [("%s \tTensorflow" % s, s.replace("()", "($1)")) for s in tensorflow_functions]
+        self.tf_completions = [("%s \tTensorflow" % s, s.replace("()", "($1)")) for s in tensorflow_functions]
 
-	def on_query_completions(self, view, prefix, locations):
+    def on_query_completions(self, view, prefix, locations):
 
-		loc = locations[0]
-		if not view.match_selector(loc, 'source.python'):
-			return
+        loc = locations[0]
+        if not view.match_selector(loc, 'source.python'):
+            return
 
-		completions = self.tf_completions
-		# get the inverted line before the location
-		line_before_reg = sublime.Region(view.line(loc).a, loc)
-		line_before = view.substr(line_before_reg)[::-1]
+        completions = self.tf_completions
+        # get the inverted line before the location
+        line_before_reg = sublime.Region(view.line(loc).a, loc)
+        line_before = view.substr(line_before_reg)[::-1]
 
-		# check if it matches the trigger
-		m = RE_TRIGGER_BEFORE.match(line_before)
-		if m:
-			# get the text before the .
-			trigger = m.group(1)[::-1]
-			# filter and strip the completions
-			completions = [
-				(c[0], c[1][len(trigger):]) for c in completions
-				if c[1].startswith(trigger)
-			]
+        # check if it matches the trigger
+        m = RE_TRIGGER_BEFORE.match(line_before)
+        if m:
+            # get the text before the .
+            trigger = m.group(1)[::-1]
+            # filter and strip the completions
+            completions = [
+                (c[0], c[1][len(trigger):]) for c in completions
+                if c[1].startswith(trigger)
+            ]
 
-		return completions
+        return completions
+
 
 class TensorflowDocCommand(sublime_plugin.TextCommand):
 
-	def run(self, edit):
+    def run(self, edit):
 
-		selection = ""
-		for region in self.view.sel():
-			selection += self.view.substr(region)
+        selection = ""
+        for region in self.view.sel():
+            selection += self.view.substr(region)
 
-		sub_selec = selection.split('.')
-		size = len(sub_selec)
+        sub_selec = selection.split('.')
+        size = len(sub_selec)
 
-		selec_link = selection.replace('.', '/')
-		sub_selec = selec_link.split('/')
+        selec_link = selection.replace('.', '/')
+        sub_selec = selec_link.split('/')
 
-		if selection + "()" in tensorflow_functions:
-			webbrowser.open("https://www.tensorflow.org/api_docs/python/%s" % selec_link)
-		else:
-			sublime.error_message("Not a Tensorflow class or function.\nHere is an example of what can be selected : 'tf.nn.conv2d'")
-
+        if selection + "()" in tensorflow_functions:
+            webbrowser.open("https://www.tensorflow.org/api_docs/python/%s" % selec_link)
+        else:
+            sublime.error_message("Not a Tensorflow class or function.\nHere is an example of what can be selected : 'tf.nn.conv2d'")
