@@ -2090,13 +2090,38 @@ class TensorflowDocCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
 
+        is_auto_selection = False
         selection = ""
-        for region in self.view.sel():
-            selection += self.view.substr(region)
+        regions = self.view.sel()
 
-        selec_link = selection.replace('.', '/')
+        if len(regions) == 1 and len(regions[0]) == 0:
+            selection = self.view.substr(
+                self.extend_point_by_allowed_chars(
+                    point=regions[0].a,
+                    allowed_chars='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._',
+                )
+            )
+            is_auto_selection = True
+        else:
+            for region in self.view.sel():
+                selection += self.view.substr(region)
 
         if selection + "()" in tensorflow_functions:
+            selec_link = selection.replace('.', '/')
             webbrowser.open("https://www.tensorflow.org/api_docs/python/%s" % selec_link)
-        else:
-            sublime.error_message("Not a Tensorflow class or function.\nHere is an example of what can be selected : 'tf.nn.conv2d'")
+        elif not is_auto_selection:
+            sublime.error_message(
+                "'%s' is not a Tensorflow class or function.\n"
+                "Here is an example of what can be selected: 'tf.nn.conv2d'"
+                % (selection)
+            )
+
+    def extend_point_by_allowed_chars(self, point, allowed_chars):
+        bound_l = bound_r = point
+        # extend left
+        while self.view.substr(bound_l) in allowed_chars:
+            bound_l -= 1
+        # extend right
+        while self.view.substr(bound_r) in allowed_chars:
+            bound_r += 1
+        return sublime.Region(bound_l+1, bound_r)
