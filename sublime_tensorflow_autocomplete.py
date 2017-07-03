@@ -50,7 +50,6 @@ class TensorflowDocCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
 
-        is_auto_selection = False
         selection = ""
         regions = self.view.sel()
 
@@ -61,7 +60,6 @@ class TensorflowDocCommand(sublime_plugin.TextCommand):
                     allowed_chars='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._',
                 )
             )
-            is_auto_selection = True
         else:
             for region in self.view.sel():
                 selection += self.view.substr(region)
@@ -69,7 +67,7 @@ class TensorflowDocCommand(sublime_plugin.TextCommand):
         if selection + "()" in tf_functions:
             selec_link = selection.replace('.', '/')
             webbrowser.open("https://www.tensorflow.org/api_docs/python/%s" % selec_link)
-        elif not is_auto_selection:
+        else:
             sublime.error_message(
                 "'%s' is not a Tensorflow class or function.\n"
                 "Here is an example of what can be selected: 'tf.nn.conv2d'"
