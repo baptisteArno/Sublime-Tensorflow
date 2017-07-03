@@ -53,6 +53,8 @@ class TensorflowDocCommand(sublime_plugin.TextCommand):
         selection = ""
         regions = self.view.sel()
 
+        # if there is only one cursor and the cursor selects nothing,
+        # we try to find a tf function on the cursor position.
         if len(regions) == 1 and len(regions[0]) == 0:
             selection = self.view.substr(
                 self.extend_point_by_allowed_chars(
