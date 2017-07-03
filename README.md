@@ -14,7 +14,7 @@ Sublime Tensorflow can be installed:
 
 Sublime Tensorflow offers you: 
 * Autocompletion from a list scrapped from official Tensorflow API documentation.
-* Shortcut to check the doc by selecting the Tensorflow class/function and:
+* Shortcut to check the doc by selecting or simply pointing the Tensorflow class/function and:
   * Windows & Linux: `ctrl + alt + w`
   * OSX: `ctrl + cmd + w`
   
@@ -33,7 +33,6 @@ The correct syntax is the following:
 ]
 ```
   
-
 ## Support on Beerpay
 Hey dude! Help me out for a couple of :beers:!
 
